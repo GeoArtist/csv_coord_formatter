@@ -1,1 +1,28 @@
-.venv/
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+poetry.lock
+
+# Files Folders
+_tests
+*cache*
+*secret*.toml
+.idea
+.pytest_cache
+.hypothesis/
+.vscode/
+_sample_data/
+test*.ipynb
+*.pdf
+_temp/
+_sample_data/
+*.csv
+*.rrz
+*.feather
+__pycache__/
+**/__pycache__/
