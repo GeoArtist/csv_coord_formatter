@@ -15,18 +15,14 @@ def process(df: pd.DataFrame) -> pd.DataFrame:
 
     """
 
+    df = df.iloc[:, :3]
+    df = df.copy(deep=True)
+    df.rename(columns={1: "X", 2: "Y", 3: "H"}, inplace=True)
     df.index.name = "Nr"
-    cur_columns = df.columns
-    new_columns: list[str] = ["X", "Y", "H"]
-    # Ensure new_columns has the same length as cur_columns
-    if len(new_columns) < len(cur_columns):
-        new_columns.extend([""] * (len(cur_columns) - len(new_columns)))
-        df.columns = new_columns
-        df = df[["X", "Y", "H"]]
 
     # Round Coordinates
     df["X"] = df["X"].apply(lambda x: f"{x:.{st.session_state["x_y_round"]}f}")
-    df["Y"] = df["Y"].apply(lambda x: f"{x:.{st.session_state["x_y_round"]}f}")
-    df["H"] = df["H"].apply(lambda x: f"{x:.{st.session_state["h_round"]}f}")
+    df["Y"] = df["Y"].apply(lambda y: f"{y:.{st.session_state["x_y_round"]}f}")
+    df["H"] = df["H"].apply(lambda h: f"{h:.{st.session_state["h_round"]}f}")
 
     return df

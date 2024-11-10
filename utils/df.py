@@ -44,4 +44,3 @@ def df_converter(
         st.write(e)
         df = pd.DataFrame()
     return df
-    return df
