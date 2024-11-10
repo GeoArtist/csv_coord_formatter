@@ -6,6 +6,7 @@ from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 from components.gap import gap_render
 from components.index_col_input import index_col_input_render
+from components.msgs import info_render
 from components.sep_input import sep_input_render
 from utils.df import df_converter
 
@@ -21,8 +22,12 @@ def uploader_render() -> pd.DataFrame:
         "Upload CSV file", type=["csv", "txt"], key="uploaded_file"
     )
     if uploaded_file:
-        df: DataFrame = df_converter(uploaded_file)
+        df: DataFrame = df_converter(uploaded_file, upload_container)
     else:
+        info_render(
+            "File should contain 4 columns: [Nr, X, Y, H]",
+            st_obj=upload_container,
+        )
         df = pd.DataFrame()
 
     if not df.empty:

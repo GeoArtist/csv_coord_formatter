@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+from streamlit.delta_generator import DeltaGenerator
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 from components.gap import gap_render
@@ -7,7 +8,9 @@ from components.msgs import error_render
 from utils.errors import CSVFormatError
 
 
-def df_converter(uploaded_file: UploadedFile) -> pd.DataFrame:
+def df_converter(
+    uploaded_file: UploadedFile, upload_container: DeltaGenerator
+) -> pd.DataFrame:
     """Try to convert the uploaded file to a DataFrame.
 
     Check valid of input data format
@@ -35,9 +38,10 @@ def df_converter(uploaded_file: UploadedFile) -> pd.DataFrame:
 
     except CSVFormatError as e:
         gap_render()
-        error_render(e.html_message)
+        error_render(e.html_message, st_obj=upload_container)
         df = pd.DataFrame()
     except Exception as e:
         st.write(e)
         df = pd.DataFrame()
+    return df
     return df

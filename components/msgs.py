@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit.delta_generator import DeltaGenerator
 
 
 def center_line_position(color: str, background_color: str) -> str:
@@ -27,10 +28,10 @@ def window_center_position(color: str, background_color: str) -> str:
         border-radius: 5px;"""
 
 
-def error_render(msg: str) -> None:
+def error_render(msg: str, st_obj: DeltaGenerator = st) -> None:
     BGCOLOR = "#ff4b4b"
     COLOR = "white"
-    st.markdown(
+    st_obj.markdown(
         """
     <style>
     .error-box {
@@ -46,10 +47,10 @@ def error_render(msg: str) -> None:
     )
 
 
-def info_render(msg: str) -> None:
+def info_render(msg: str, st_obj: DeltaGenerator = st) -> None:
     BGCOLOR = "#172d43"
     COLOR = "#90ddff"
-    st.markdown(
+    st_obj.markdown(
         """
     <style>
     .info-box {
@@ -65,10 +66,10 @@ def info_render(msg: str) -> None:
     )
 
 
-def warning_render(msg: str) -> None:
+def warning_render(msg: str, st_obj: DeltaGenerator = st) -> None:
     BGCOLOR = "#3e3b16"
     COLOR = "#f9f9be"
-    st.markdown(
+    st_obj.markdown(
         """
     <style>
     .warning-box {
@@ -84,10 +85,10 @@ def warning_render(msg: str) -> None:
     )
 
 
-def success_render(msg: str) -> None:
+def success_render(msg: str, st_obj: DeltaGenerator = st) -> None:
     BGCOLOR = "#173928"
     COLOR = "#dffdc9"
-    st.markdown(
+    st_obj.markdown(
         """
     <style>
     .success-box {
