@@ -7,7 +7,9 @@ from components.gap import gap_render
 from components.processing_section import processing_section_render
 from components.uploader import uploader_render
 
-st.set_page_config(page_title="CSV Coordinate Formatter")
+st.set_page_config(
+    page_title="CSV Coordinate Formatter", page_icon="favicon.ico"
+)
 st.session_state["app_error"] = None
 css_render("h2, h3 {width:fit-content; margin-inline:auto;}")
 

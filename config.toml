@@ -1,6 +1,10 @@
 [logger]
 level = "debug"
+messageFormat = "%(asctime)s %(levelname) -7s %(name)s: %(message)s"
 
 [theme]
 primaryColor = "#F63366"
 backgroundColor = "black"
+
+[client]
+showErrorDetails = false
