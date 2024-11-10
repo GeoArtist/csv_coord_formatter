@@ -25,4 +25,6 @@ _sample_data/
 *.rrz
 *.feather
 __pycache__/
+__pycache__
 **/__pycache__/
+.devcontainer/

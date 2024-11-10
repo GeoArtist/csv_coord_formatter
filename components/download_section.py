@@ -11,7 +11,8 @@ from components.sep_input import sep_input_render
 
 def download_section_render(df: pd.DataFrame) -> None:
     wrapper: DeltaGenerator = st.container(border=True)
-    wrapper.subheader("Download CSV file", divider=True)
+    wrapper.subheader("Download CSV file", divider="red")
+    gap_render(st_obj=wrapper)
     cols: list[DeltaGenerator] = wrapper.columns(3)
 
     # Output Params

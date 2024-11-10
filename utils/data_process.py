@@ -1,28 +1,20 @@
 import pandas as pd
 import streamlit as st
-from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 
-def process(uploaded_file: UploadedFile) -> pd.DataFrame:
+def process(df: pd.DataFrame) -> pd.DataFrame:
     """Main workflow data process
-
 
     Parameters
     ----------
-    uploaded_file : UploadedFile
-
+    df : pd.DataFrame
 
     Returns
     -------
     pd.DataFrame
 
     """
-    df: pd.DataFrame = pd.read_csv(
-        uploaded_file,
-        header=None,
-        sep=st.session_state["input_sep"],
-        index_col=st.session_state["input_index_col"],
-    )
+
     df.index.name = "Nr"
     cur_columns = df.columns
     new_columns: list[str] = ["X", "Y", "H"]
